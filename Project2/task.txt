@@ -1,6 +1,0 @@
-Task: Interactive Flutter UI
-Create a screen with three horizontal sections:
-1. A small red box on the left side.
-2. A yellow box in the middle displaying a counter value, initially 0. Each time the user taps this box, the counter should increase by 1.
-3. A box on the right side that changes its color: green when the counter is even and blue when the counter is odd.
-The layout should adjust according to the screen size.
