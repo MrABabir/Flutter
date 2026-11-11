@@ -55,7 +55,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  bool even = false;
+  // bool even = false;
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -111,32 +111,39 @@ class _MyHomePageState extends State<MyHomePage> {
         //       style: Theme.of(context).textTheme.headlineMedium,
         //     ),
         //   ],
-        // ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.red, 
-                // height :80,
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.yellow,
-                // height: 80
-              ),
-            ),
-            Expanded(
-              flex: 1,
-             child: Container(
-              color: Colors.green,
-            ),
-            )
-          ],
-        ),
+        // ),      
+  //child: GestureDetector(
+   // onTap: _incrementCounter,
+    //child: SizedBox(
+      //height: 300,
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(color: Colors.red),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: _incrementCounter,
+              //child: Text('Counter Value: $_counter'),
+           child: Container(
+      color: Colors.yellow,
+      child: Center(
+        child: Text('Counter Value: $_counter'),
       ),
+    ),
+          //  child: Text('Counter Value: $_counter'),
+          ),
+          ),
+          Expanded(
+            child: Container(
+              color: _counter % 2 == 0 ? Colors.green : Colors.blue,
+            ),
+          ),
+        ],
+      ),
+   // ),
+  //),
+),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
       //   tooltip: 'Increment',
