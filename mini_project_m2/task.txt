@@ -1,0 +1,4 @@
+This project is for the module 2
+
+
+Mini Task: Build a static UI (Profile / Dashboard screen)
