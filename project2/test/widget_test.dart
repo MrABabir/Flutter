@@ -1,30 +1,29 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:project2/main.dart';
+import 'package:project2/weather_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  // Tests JSON parsing with fake data (no internet needed).
+  test('Weather.fromJson reads the API data correctly', () {
+    final fakeJson = {
+      'current': {
+        'temperature_2m': 30.5,
+        'relative_humidity_2m': 80,
+        'wind_speed_10m': 12.3,
+        'weather_code': 3,
+      },
+      'daily': {
+        'temperature_2m_max': [33.0],
+        'temperature_2m_min': [25.0],
+      },
+    };
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final weather = Weather.fromJson(fakeJson);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(weather.temperature, 30.5);
+    expect(weather.humidity, 80);
+    expect(weather.windSpeed, 12.3);
+    expect(weather.maxTemp, 33.0);
+    expect(weather.minTemp, 25.0);
+    expect(weather.description, 'Overcast');
   });
 }
